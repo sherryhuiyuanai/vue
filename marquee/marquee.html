@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=divice-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+    <title>Document</title>
+
+    <!-- import vue package -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- create an area that I want to control -->
+    <div id="app">
+        <input type = "button" value="play" @click="play">
+        <input type = "button" value="stop">
+    
+        <h1>{{ msg }}</h1>
+
+    </div>
+
+    <script>
+        var vm = new Vue ({
+            el: '#app',
+            data: {
+                msg: '~h~e~l~l~o w~o~r~l~d'
+            },
+            methods: {
+                play(){
+
+                    // note. in the VM instance, if we want to fetch the data or call the 
+                    // function inside VM, we must access them by this.xxx. 'this.' is the
+                    // the VM instance we just new.
+                    
+                    // var _this = this // but we can use => below, in this case, don't need _this.
+                    setInterval( () => {
+                        // for testing in console-> if we've successfully fetched the msg
+                        console.log(this.msg)
+
+                        // fetch the first char
+                        var start = this.msg.substring(0, 1)
+                        // fetch all following char
+                        var end = this.msg.substring(1)
+                        // reconnect the new string and 
+                        this.msg = end + start
+
+                    }, 100)
+
+                    // note. VM can listen all changes of itself, once the data changes,
+                    // it will update the changes to the website page. so the advantage is
+                    // the programmer just need to concentrate on the date themself, we 
+                    // dont have to focus on the dom render.
+                }
+            }
+        })
+
+        // steps:
+        // 1. connect the button "start" with a clicking event   v-on @
+        // 2. write relevant code in the event function:
+        //   fetch the msg string, then pick the first char and move it to the last place
+        // 3. need to put step2 into a timer loop
+    </script>
+</body>
+</html>
