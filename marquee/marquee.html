@@ -15,7 +15,7 @@
     <!-- create an area that I want to control -->
     <div id="app">
         <input type = "button" value="play" @click="play">
-        <input type = "button" value="stop">
+        <input type = "button" value="stop" @click="stop">
     
         <h1>{{ msg }}</h1>
 
@@ -25,17 +25,25 @@
         var vm = new Vue ({
             el: '#app',
             data: {
-                msg: '~h~e~l~l~o w~o~r~l~d'
+                msg: '~h~e~l~l~o w~o~r~l~d',
+                intervalId: null // define the timer Id in data
             },
             methods: {
-                play(){
 
+                // funtion to start the timer
+                play() {
                     // note. in the VM instance, if we want to fetch the data or call the 
                     // function inside VM, we must access them by this.xxx. 'this.' is the
                     // the VM instance we just new.
                     
+
+                    // the below will avoid: clicking 'start' multiple times and the speed accumulates
+                    if(this.intervalId != null)
+                        return;
+
+
                     // var _this = this // but we can use => below, in this case, don't need _this.
-                    setInterval( () => {
+                    this.intervalId = setInterval( () => {
                         // for testing in console-> if we've successfully fetched the msg
                         console.log(this.msg)
 
@@ -45,14 +53,22 @@
                         var end = this.msg.substring(1)
                         // reconnect the new string and 
                         this.msg = end + start
-
                     }, 100)
 
                     // note. VM can listen all changes of itself, once the data changes,
                     // it will update the changes to the website page. so the advantage is
                     // the programmer just need to concentrate on the date themself, we 
                     // dont have to focus on the dom render.
+                },
+
+                // function to stop the timer
+                stop() {
+                    clearInterval(this.intervalId)
+
+                    // once clear the interval, set the intervalId as null
+                    this.intervalId = null
                 }
+
             }
         })
 
