@@ -3,9 +3,9 @@
 
 <head>
     <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width=divice-width, initial-scale=1.0">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content = "ie=edge">
-    <title>Document</title>
+    <title>Marquee Effect</title>
 
     <!-- import vue package -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -72,11 +72,25 @@
             }
         })
 
-        // steps:
-        // 1. connect the button "start" with a clicking event   v-on @
+        // function steps we need above:
+        // 1. connect the button "start" with a clicking event:  'v-on' or '@'
         // 2. write relevant code in the event function:
         //   fetch the msg string, then pick the first char and move it to the last place
         // 3. need to put step2 into a timer loop
+
+
+
+        /* 
+            study notes so far
+
+        the advantage of using framework: don't need to render dom totally
+        differences between framework and library
+        mvc backend, mvvm front end
+        v-cloak, v-text, v-html, v-bind, v-on
+        marquee effect demo
+        
+        */
+
     </script>
 </body>
 </html>
