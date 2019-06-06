@@ -24,11 +24,6 @@
 
         <div class="inner" @click="div1Handler">
             <input type ="button" value="click me" @click.stop="btnHandler">
-            <!-- note.
-            '.stop' is an event decorator here, if we don't add it,
-            then when we click the button, the console will display:
-            firstly btn event triggered, then inner div event triggered.
-            the .stop removes the second events from being triggered -->
         </div>
 
 
