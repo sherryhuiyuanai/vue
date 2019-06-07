@@ -32,7 +32,7 @@
             the btn to trigger the div event, the div event will be triggered. -->
 
 
-            
+
             <input type ="button" value="click me" @click.stop="btnHandler">
             <!-- note.
             '.stop' is an event decorator here, if we don't add it,
@@ -42,11 +42,11 @@
         </div>
 
 
-        <a href="https://cstimer.net" @click.prevent="linkClick">Practice</a>
+        <a href="https://cstimer.net" @click.prevent.once="linkClick">Practice</a>
         <!-- note. .prevent is to prevent the default event. eg, here, otherwise
         the default event is console log, then jump to the link website -->
 
-
+        <!-- note. '.once' means this event can only be triggered once -->
 
     </div>
 
