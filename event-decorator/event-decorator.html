@@ -23,10 +23,14 @@
     <div id="app">
 
 
-        <div class="inner" @click.capture="div1Handler">
+        <div class="inner" @click.self="div1Handler">
             <!-- note. the default triggered order is the inside btn event first,
             then the outside div event. now I added .capture, so when clicking,
             the div event will firstly be triggered, then btn event. -->
+
+            <!-- note. the '.self' means only I click the div itself, not by clicking
+            the btn to trigger the div event, the div event will be triggered. -->
+
 
             
             <input type ="button" value="click me" @click.stop="btnHandler">
